@@ -507,9 +507,9 @@ body {
         position: absolute;
         left: 50%;
         bottom: 10%;
-        height: 40px;
-        width: 140px;
-        margin-left: -90px;
+        height: 56px;
+        width: 200px;
+        margin-left: -100px;
         padding: 20px;
         background-color: transparent;
         cursor: pointer;
@@ -544,8 +544,8 @@ body {
     }
     .play-button {
         float: left;
-        height: 40px;
-        width: 40px;
+        height: 56px;
+        width: 56px;
         background: url(../img/play-button-02.svg);
         background-size: 100%;
         background-repeat: no-repeat;
@@ -563,8 +563,8 @@ body {
         margin-left: 12px;
         font-family: "Avenir lt std";
         font-weight: 600;
-        font-size: 13px; 
-        line-height: 40px;
+        font-size: 20px;
+        line-height: 56px;
     }
     #section1 {
         top: 100%;
@@ -590,7 +590,7 @@ body {
     .client-item {
         display: table;
         position: relative;
-        height: 270px;
+        height: 400px;
         width: 100%;
         overflow: hidden;
         cursor: pointer;
@@ -898,10 +898,12 @@ body {
     /*Project Page*/
 
     .proj-video {
+        display: table;
         position: relative;
         width: 100%;
-        height: 60%;       
+        height: 100%;       
         cursor: pointer;
+        background-size: cover;
     }
     .play-btn-lrg {
         position: absolute;
@@ -927,42 +929,47 @@ body {
     }
     .proj-video, .play-btn-lrg {
         background-position: center;
-        background-position: 50% 50%;
         background-repeat: no-repeat;
     }
     .proj-back-btn {
         position: absolute;
-        top: 0px;
+        top: 40px;
         right: 40px;
     }
     .proj-info-cont {
+        display: table-cell;
+        vertical-align: middle;
         position: relative;
     }
+
     .proj-text {
-        margin: 50px 0 100px 5%;
+        margin: 50px auto 100px ;
         width: 60%;
+        max-width: 900px;
+    }
+    .proj-client-title {
+        height: 20px;
+        margin-bottom: 20px;
+        background-size: contain;
+        background-position: 0% 50%;
+        background-repeat: no-repeat;
     }
     .proj-info {
-        margin-top: 25px;
-    }
-    .proj-info,
-    .proj-client-title {
         font-family: 'Avenir lt std';
-    }
-    .proj-text h2 {
-        font-size: 14px;
-        font-weight: 200;
-        color: #00b7f1;
+        margin-top: 25px;
     }
     .proj-text h1 {
         font-family: 'Avenir lt std';
-        font-size: 32px;
-        font-weight: 600;
-        color: #000000;
+        font-size: 56px;
+        font-weight: 100;
+        color: #fff;
+        margin-bottom: 40px;
     }
     .proj-text p {
-        font-weight: 200;
-        font-size: 13px;
+        font-weight: 100;
+        font-size: 17px;
+        line-height: 26px;
+        color: #fff;
     }
 
     /*Why/What Pages*/
@@ -1004,6 +1011,7 @@ body {
         background-position: center;
         background-position: 50% 50%;
         background-repeat: no-repeat;
+        background-size: cover;
     }
     .wy-wt-back-btn {
         position: absolute;
@@ -1013,28 +1021,27 @@ body {
     .wy-wt-info-cont {
         position: relative;
         float: right;
-        width: 40%;
-        background-color: #ffffff;
+        width: 39%;
     }
     .wy-wt-text {
         margin: 140px 20px 100px 20px;
         width: 80%;
     }
     .wy-wt-info {
-        margin-top: 25px;
+        margin-top: 65px;
     }
     .wy-wt-info{
         font-family: 'Avenir lt std';
     }
     .wy-wt-text h1 {
         font-family: 'Avenir lt std';
-        font-size: 50px;
+        font-size: 60px;
         font-weight: 600;
         color: #00b7f1;
     }
     .wy-wt-text p {
         font-weight: 200;
-        font-size: 13px;
+        font-size: 17px;
     }
 /* ==========================================================================
    Media Queries
@@ -1092,33 +1099,17 @@ body {
         font-size: 16px;
         line-height: 28px;
     }
+    /*Why What Pages*/
 
-    /*Why/What Pages*/
-    .wy-wt-img-cont {
-        height: 60%;
-        width: 100%;
-        position: relative;
-    }
-    .wy-wt-video {
-        position: relative;
-        width: 100%;
-    }
-    .wy-wt-back-btn {
-        position: absolute;
-        top: 40px;
-        right: 40px;
-    }
-    .wy-wt-info-cont {
-        position: relative;
-        width: 100%;
-        background-color: #ffffff;
-    }
-    .wy-wt-text {
-        margin: 40px 20px 100px 20px;
-        width: 80%;
-    }
     .wy-wt-info {
         margin-top: 25px;
+    }
+    .wy-wt-text h1 {
+        font-size: 50px;
+    }
+    .wy-wt-text p {
+        font-weight: 200;
+        font-size: 16px;
     }
 }
 
@@ -1174,34 +1165,19 @@ body {
     .allPro-p-item-txt p {
         font-size: 14px;
         line-height: 24px;
-    }  
-    /*Why/What Pages*/
-    .wy-wt-img-cont {
-        height: 60%;
-        width: 100%;
-        position: relative;
-    }
-    .wy-wt-video {
-        position: relative;
-        width: 100%;
-    }
-    .wy-wt-back-btn {
-        position: absolute;
-        top: 40px;
-        right: 40px;
-    }
-    .wy-wt-info-cont {
-        position: relative;
-        width: 100%;
-        background-color: #ffffff;
-    }
-    .wy-wt-text {
-        margin: 40px 20px 100px 20px;
-        width: 80%;
-    }
+    } 
+    /*Why What Pages*/
+
     .wy-wt-info {
-        margin-top: 25px;
+        margin-top: 30px;
     }
+    .wy-wt-text h1 {
+        font-size: 40px;
+    }
+    .wy-wt-text p {
+        font-weight: 200;
+        font-size: 14px;
+    } 
 }
 
 @media only screen and (min-width: 768px) and (max-width: 899px) {
@@ -1242,7 +1218,7 @@ body {
     .wy-wt-info-cont {
         position: relative;
         width: 100%;
-        background-color: #ffffff;
+
     }
     .wy-wt-text {
         margin: 40px 20px 100px 20px;
@@ -1251,6 +1227,13 @@ body {
     .wy-wt-info {
         margin-top: 25px;
     }
+    .wy-wt-text h1 {
+        font-size: 40px;
+    }
+    .wy-wt-text p {
+        font-weight: 200;
+        font-size: 14px;
+    } 
 }
 @media only screen and (min-width: 451px) and (max-width: 767px) {
     /*Menu Styles*/
@@ -1405,7 +1388,6 @@ body {
     .wy-wt-info-cont {
         position: relative;
         width: 100%;
-        background-color: #ffffff;
     }
     .wy-wt-text {
         margin: 40px 20px 100px 20px;
@@ -1414,6 +1396,13 @@ body {
     .wy-wt-info {
         margin-top: 25px;
     }
+    .wy-wt-text h1 {
+        font-size: 40px;
+    }
+    .wy-wt-text p {
+        font-weight: 200;
+        font-size: 14px;
+    } 
 }
 @media only screen and (min-width: 100px) and (max-width: 450px) {
     /*Menu Styles*/
@@ -1557,7 +1546,6 @@ body {
     .wy-wt-info-cont {
         position: relative;
         width: 100%;
-        background-color: #ffffff;
     }
     .wy-wt-text {
         margin: 40px 20px 100px 20px;
@@ -1566,6 +1554,13 @@ body {
     .wy-wt-info {
         margin-top: 25px;
     }
+    .wy-wt-text h1 {
+        font-size: 40px;
+    }
+    .wy-wt-text p {
+        font-weight: 200;
+        font-size: 14px;
+    } 
 }
 
 @media print,

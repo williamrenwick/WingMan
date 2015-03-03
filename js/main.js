@@ -1,46 +1,62 @@
 jQuery(document).ready(function ($) {
 
-	var menuWidth = $('.menu-wrapper').width(),
-		mainWrapper = $('.main-wrapper'),
-		slideCount = $('#hp-slider section').length,
-		slideWidth = $('#hp-slider section').width(),
-		$hpslider = $('#hp-slider'),
-		$menu = $('#menu'),
-		$section = $('.section'),
-		windowW = $(window).width(),
-		windowH = $(window).height(),
-		$active;
-
 	//$('.slide').css({height: windowH});
 
 	//var	slideHeight = $('#hp-slider section').height();
 
+	var globalVars = function() {
+		var menuWidth = $('.menu-wrapper').width(),
+			mainWrapper = $('.main-wrapper'),
+			$menu = $('#menu'),
+			windowW = $(window).innerWidth(),
+			windowH = $(window).height(); 
+
+		function update() {
+			menuWidth = $('.menu-wrapper').width(),
+			mainWrapper = $('.main-wrapper'),
+			$menu = $('#menu'),
+			windowW = $(window).innerWidth(),
+			windowH = $(window).height();
+
+			this.menuWidth = menuWidth,
+			this.mainWrapper = mainWrapper,
+			this.$menu = $menu,
+			this.windowW = windowW,
+			this.windowH = windowH
+		};
+
+		return {			
+			update: update,
+			menuWidth:  menuWidth,
+			mainWrapper: mainWrapper,
+			$menu: $menu,
+			windowW: windowW,
+			windowH: windowH
+
+		}
+	}();
+
+	console.log(globalVars.windowH);
+
 
 	function allWrapSet() {
-		windowW = $(window).width(),
-		windowH = $(window).height(),
-		menuWidth = $('.menu-wrapper').width();
-
-		mainWrapper.css({ 
-			width: windowW - menuWidth,
-			height: windowH
+		console.log(globalVars.menuWidth, globalVars.windowW)
+		globalVars.mainWrapper.css({ 
+			width: globalVars.windowW - globalVars.menuWidth,
+			height: globalVars.windowH
 		});
 	};
 
 	function hpWrapSet() {
-		windowW = $(window).width(),
-		windowH = $(window).height(),
-		menuWidth = $('.menu-wrapper').width();
-
-		mainWrapper.css({ 
-			width: windowW - menuWidth
+		globalVars.mainWrapper.css({ 
+			width: globalVars.windowW - globalVars.menuWidth
 		});
 	};
 	
-	$menu.css({
-		width: windowW - menuWidth, 
-		height: windowH
-	})
+	globalVars.$menu.css({
+		width: globalVars.windowW - globalVars.menuWidth, 
+		height: globalVars.windowH
+	});
 
 	//menu 
 	var navObj = {
@@ -59,12 +75,12 @@ jQuery(document).ready(function ($) {
 				$menubtn.toggleClass('clicked');
 				
 				if (!clicked) {
-					$menu.fadeIn();
+					globalVars.$menu.fadeIn();
 					$menuUL.addClass('clicked');
 					clicked = true;
 				} else {
 					$menuUL.removeClass('clicked');
-					$menu.delay(300).fadeOut();
+					globalVars.$menu.delay(300).fadeOut();
 					clicked = false;
 				}
 
@@ -141,7 +157,7 @@ jQuery(document).ready(function ($) {
 	}
 	function forceScroll() {
 
-		mainWrapper.css('overflow-y', 'scroll');
+		globalVars.mainWrapper.css('overflow-y', 'scroll');
 	}
 	function whiteBG() {
 		var body = $('body');
@@ -293,14 +309,13 @@ jQuery(document).ready(function ($) {
 
 		var whyWhatObj = {
 			set: function() {
-				var $video = $('.wy-wt-video'),
-					windowW = $(window).width();
+				var $video = $('.wy-wt-video');
 
 				menuWidth = $('.menu-wrapper').width();
 
-				if(windowW >= 900) {
+				if(globalVars.windowW >= 900) {
 					$video.css({
-						width: (windowW - menuWidth) / 100 * 60
+						width: (globalVars.windowW - menuWidth) / 100 * 60
 					});
 				} else {
 					$video.css({
@@ -310,9 +325,25 @@ jQuery(document).ready(function ($) {
 			}
 		}
 
+	//Get Page Type 
 
-		//Where page
+	var pageGetter = function() {
+		var pageid = $('.page-id'),
+			getData = pageid.data('pageType');
 
+		function update() {
+			pageid = $('.page-id');
+			getData = pageid.data('pageType');
+
+			this.getData = getData;
+		}
+
+		return {
+			getData: getData
+		}
+
+	}();
+	
 	function debounce(func, wait, immediate) {
 		var timeout;
 		return function() {
@@ -328,24 +359,30 @@ jQuery(document).ready(function ($) {
 		};
 	};
 	var resizeFn = debounce(function() {
+		globalVars.update();
 		init(true);
 	}, 100);
 
 	//window event listeners
 	$(window).on('resize', resizeFn);
 
-	//Initalise and call all required functions on load
+	//Initalise and call all GENERAL functions on load
+
+	function generalFns() {
+		navObj.events();
+	};
+	generalFns();
+
+	//Initalise and call all SPECIFIC required functions on load
 	function hpInit() {
 		hpWrapSet()
 		hpObj.events();
-		navObj.events();
 		slideAnim();
-
+		slideLog();
 		console.log('running hpInit')
 	}
 	function clientInit() {
 		allWrapSet();
-		navObj.events();
 		forceScroll();
 		clientHovEvents();
 
@@ -354,7 +391,6 @@ jQuery(document).ready(function ($) {
 	function allProInit() {
 		allProObj.events();
 		allWrapSet();
-		navObj.events();
 		forceScroll();
 		truncate();
 
@@ -363,15 +399,12 @@ jQuery(document).ready(function ($) {
 	function proPgInit() {
 		forceScroll();
 		whiteBG();
-		navObj.events();
 		allWrapSet();
 
 		console.log('running proPgInit')
 	}
 	function whyWhatInit() {
 		forceScroll();
-		whiteBG();
-		navObj.events();
 		allWrapSet();
 		whyWhatObj.set();
 
@@ -379,23 +412,39 @@ jQuery(document).ready(function ($) {
 	}
 
 	function init(resize) {
-		var pageid = $('.page-id'),
-			getData = pageid.data('pageType');
 
-		if (getData === 'homepage') {
-			hpInit();
+		if (pageGetter.getData === 'homepage') {		
 			// any functions not to run on resize below
-			if (!resize) {
-				slideLog();
+			if (resize) {
+				hpWrapSet();
+			} else {
+				hpInit();	
 			}		
-		} else if (getData === 'clientspage') {
-			clientInit();
-		} else if (getData === 'allprojects') {
-			allProInit();
-		} else if (getData === 'projectpage') {
-			proPgInit();
-		} else if (getData === 'whywhat') {
-			whyWhatInit();
+		} else if (pageGetter.getData === 'clientspage') {
+			if (resize) {
+				allWrapSet();
+			} else {
+				clientInit();
+			}	
+		} else if (pageGetter.getData === 'allprojects') {
+			if (resize) {
+				allWrapSet();
+			} else {
+				allProInit();
+			}				
+		} else if (pageGetter.getData === 'projectpage') {
+			if (resize) {
+				allWrapSet();
+			} else {
+				proPgInit();
+			}
+		} else if (pageGetter.getData === 'whywhat') {
+			if (resize) {
+				allWrapSet();
+				whyWhatObj.set();
+			} else {
+				whyWhatInit();
+			}
 		}
 	}
 
