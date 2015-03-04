@@ -59,6 +59,23 @@ h1, h2, h3, h4, h5, p {
     margin: 0;
     padding: 0;
 }
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
 
 @font-face {
   font-family: 'Apercu Bo
@@ -313,7 +330,7 @@ body {
 }
 .back-btn {
     width: 40px;
-    height: 40px;  w
+    height: 40px;  
     margin: 0;   
     border: 3px solid #00b7f1;
     border-radius: 80px;
@@ -979,7 +996,8 @@ body {
         height: 100%;       
         cursor: pointer;
     }
-    .wy-wt-img-cont {
+    .wy-wt-img-cont,
+    #where-map-cont {
         float: left;
         height: 100%;
         width: 60%;
@@ -1018,12 +1036,13 @@ body {
         top: 40px;
         right: 40px;
     }
-    .wy-wt-info-cont {
+    .wy-wt-info-cont,
+    .where-info-cont {
         position: relative;
         float: right;
         width: 39%;
     }
-    .wy-wt-text {
+    .wy-wt-text{
         margin: 140px 20px 100px 20px;
         width: 80%;
     }
@@ -1043,6 +1062,68 @@ body {
         font-weight: 200;
         font-size: 17px;
     }
+
+    /* WHERE */
+    .where-info-cont {
+        display: table;
+        height: 100%;
+    }
+    #where-text {
+        display: table-cell;
+        width: 80%;
+        vertical-align: middle;
+    }
+    #where-text section {
+        position: relative;
+        display: table;
+        height: 200px;
+        width: 100%;
+        font-family: 'Avenir lt std';
+    }
+
+    .section-wrap {
+        display: table-cell;
+        vertical-align: middle;
+    } 
+
+    .where-sect-icon {
+        position: absolute;
+        top: 50%;
+        float: left;
+        height: 30px;
+        width: 30px; 
+        margin-top: -15px;       
+        background-repeat: no-repeat;
+        background-size: contain;
+    }    
+    #map-pin-icon {
+        background-image: url(../img/mappin.png);
+    }
+    #telephone-icon {
+        background-image: url(../img/tele.png);
+    }
+    #email-icon {
+        background-image: url(../img/tele.png);
+    }
+    .section-text {
+        float: left;
+        margin-left: 60px;
+    }
+    #where-text h3 {
+        font-size: 26px;
+        font-weight: 200;
+        color: #cccccc;
+        line-height: 35px;
+    }
+    #where-text h5 {
+        color: #dc3030;
+    }
+    #company-name {
+        font-weight: 600;
+        color: #dc3030;
+    }
+
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */

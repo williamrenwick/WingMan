@@ -324,6 +324,44 @@ jQuery(document).ready(function ($) {
 				}
 			}
 		}
+		//Who / Why Pages
+
+		var whyWhatObj = {
+			set: function() {
+				var $video = $('.wy-wt-video');
+
+				menuWidth = $('.menu-wrapper').width();
+
+				if(globalVars.windowW >= 900) {
+					$video.css({
+						width: (globalVars.windowW - menuWidth) / 100 * 60
+					});
+				} else {
+					$video.css({
+						width: '100%'
+					});
+				}
+			}
+		}
+		//Where
+
+		function initMap() {
+		    var mapCanvas = $('#where-map-cont')[0],
+		    	wingManLtLng = new google.maps.LatLng(51.537650, -0.202696);
+		    var mapOptions = {
+		    	center: wingManLtLng,
+		        zoom: 15,
+		        mapTypeId: google.maps.MapTypeId.ROADMAP
+		    }
+			var map = new google.maps.Map(mapCanvas, mapOptions);
+
+		    var marker = new google.maps.Marker({
+		        position: wingManLtLng,
+		        map: map,
+		        title: 'WingMan'
+		    });
+		}
+
 
 	//Get Page Type 
 
@@ -410,7 +448,14 @@ jQuery(document).ready(function ($) {
 
 		console.log('running whyWhatInit');
 	}
+	function whereInit() {
+		forceScroll();
+		allWrapSet();
+		whyWhatObj.set();
+		initMap();
 
+		console.log('running whereInit');
+	}
 	function init(resize) {
 
 		if (pageGetter.getData === 'homepage') {		
@@ -444,6 +489,13 @@ jQuery(document).ready(function ($) {
 				whyWhatObj.set();
 			} else {
 				whyWhatInit();
+			}
+		} else if (pageGetter.getData === 'where') {
+			if (resize) {
+				allWrapSet();
+				whyWhatObj.set();
+			} else {
+				whereInit();
 			}
 		}
 	}
