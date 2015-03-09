@@ -36,27 +36,28 @@ jQuery(document).ready(function ($) {
 		}
 	}();
 
-	console.log(globalVars.windowH);
-
 
 	function allWrapSet() {
-		console.log(globalVars.menuWidth, globalVars.windowW)
 		globalVars.mainWrapper.css({ 
 			width: globalVars.windowW - globalVars.menuWidth,
 			height: globalVars.windowH
 		});
+		menuWidthHeight();
 	};
 
 	function hpWrapSet() {
 		globalVars.mainWrapper.css({ 
 			width: globalVars.windowW - globalVars.menuWidth
 		});
+		menuWidthHeight();
+	};
+	function menuWidthHeight() {
+		globalVars.$menu.css({
+			width: globalVars.windowW - globalVars.menuWidth, 
+			height: globalVars.windowH
+		});
 	};
 	
-	globalVars.$menu.css({
-		width: globalVars.windowW - globalVars.menuWidth, 
-		height: globalVars.windowH
-	});
 
 	//menu 
 	var navObj = {
@@ -66,6 +67,7 @@ jQuery(document).ready(function ($) {
 				$menuUL = $('#menu ul'),
 				$backBtn = $('.back-btn'),
 				$logo = $('#wing-logo'),
+				$playBtn = $('.play-cont'),
 				moveIntId,
 				self = this;
 
@@ -75,16 +77,14 @@ jQuery(document).ready(function ($) {
 				$menubtn.toggleClass('clicked');
 				
 				if (!clicked) {
-					globalVars.$menu.fadeIn();
+					globalVars.$menu.addClass('clicked').fadeIn();
 					$menuUL.addClass('clicked');
 					clicked = true;
 				} else {
 					$menuUL.removeClass('clicked');
-					globalVars.$menu.delay(300).fadeOut();
+					globalVars.$menu.delay(300).fadeOut().removeClass('clicked');
 					clicked = false;
 				}
-
-				self.set();
 			});
 			$backBtn.on({ 
 				mouseenter: function() {
@@ -103,6 +103,7 @@ jQuery(document).ready(function ($) {
 					moveBckArr($arrow, 'once');
 				}
 			});
+
 			$logo.on({
 				mouseenter: function() {
 					var $tagline = $('#tagline');
@@ -149,10 +150,6 @@ jQuery(document).ready(function ($) {
 				'margin-left': - list.width() / 2,
 				'margin-top': - list.height() / 2
 			});
-			$menu.css({
-				width: windowW - menuWidth, 
-				height: windowH
-			});
 		}
 	}
 	function forceScroll() {
@@ -184,11 +181,11 @@ jQuery(document).ready(function ($) {
 				afterLoad: function(anchorLink, index) {
 					var $active = $('.active');
 
-					$('video').get(index - 1).play();
+					$('video')[index - 1].play();
 				},
 				afterRender: function() {
 					slideAnim();
-					$('video').get(0).play();
+					$('video')[0].play();
 				},
 				onLeave: function(index, nextIndex, direction) {
 					var $active = $('.active'),
@@ -264,18 +261,18 @@ jQuery(document).ready(function ($) {
 		//Clients Page
 
 		function clientHovEvents() {
-			var $item = $('.client-item');
-
+			var $item = $('.cTxtContent');
+			console.log('hovevent');
 			$item.on({
 				mouseenter: function() {
 					var $this = $(this);
-
-					$this.addClass('active');
+					console.log('in');
+					$this.parent().addClass('active');
 				},
 				mouseleave: function() {
 					var $this = $(this);
 
-					$this.removeClass('active');
+					$this.parent().removeClass('active');
 				}
 			})
 		}
@@ -308,36 +305,17 @@ jQuery(document).ready(function ($) {
 		//Who / Why Pages
 
 		var whyWhatObj = {
-			set: function() {
-				var $video = $('.wy-wt-video');
+			set: function(obj) {
+				var $jqObj = $(obj);
 
-				menuWidth = $('.menu-wrapper').width();
-
-				if(globalVars.windowW >= 900) {
-					$video.css({
-						width: (globalVars.windowW - menuWidth) / 100 * 60
-					});
-				} else {
-					$video.css({
-						width: '100%'
-					});
-				}
-			}
-		}
-		//Who / Why Pages
-
-		var whyWhatObj = {
-			set: function() {
-				var $video = $('.wy-wt-video');
-
-				menuWidth = $('.menu-wrapper').width();
+				globalVars.menuWidth = $('.menu-wrapper').width();
 
 				if(globalVars.windowW >= 900) {
-					$video.css({
-						width: (globalVars.windowW - menuWidth) / 100 * 60
+					$jqObj.css({
+						width: (globalVars.windowW - globalVars.menuWidth) / 100 * 60
 					});
 				} else {
-					$video.css({
+					$jqObj.css({
 						width: '100%'
 					});
 				}
@@ -351,6 +329,8 @@ jQuery(document).ready(function ($) {
 		    var mapOptions = {
 		    	center: wingManLtLng,
 		        zoom: 15,
+		        scrollwheel:false,
+		        draggable: true,
 		        mapTypeId: google.maps.MapTypeId.ROADMAP
 		    }
 			var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -397,6 +377,7 @@ jQuery(document).ready(function ($) {
 		};
 	};
 	var resizeFn = debounce(function() {
+
 		globalVars.update();
 		init(true);
 	}, 100);
@@ -444,14 +425,14 @@ jQuery(document).ready(function ($) {
 	function whyWhatInit() {
 		forceScroll();
 		allWrapSet();
-		whyWhatObj.set();
+		whyWhatObj.set('.wy-wt-video');
 
 		console.log('running whyWhatInit');
 	}
 	function whereInit() {
 		forceScroll();
 		allWrapSet();
-		whyWhatObj.set();
+		whyWhatObj.set('#map-wrap');
 		initMap();
 
 		console.log('running whereInit');
@@ -486,14 +467,14 @@ jQuery(document).ready(function ($) {
 		} else if (pageGetter.getData === 'whywhat') {
 			if (resize) {
 				allWrapSet();
-				whyWhatObj.set();
+				whyWhatObj.set('.wy-wt-video');
 			} else {
 				whyWhatInit();
 			}
 		} else if (pageGetter.getData === 'where') {
 			if (resize) {
 				allWrapSet();
-				whyWhatObj.set();
+				whyWhatObj.set('#map-wrap');
 			} else {
 				whereInit();
 			}

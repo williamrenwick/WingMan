@@ -1,6 +1,6 @@
 
 		function clientHovEvents() {
-			var $item = $('.client-item');
+			var $item = $('.cTxtContent');
 
 			$item.on({
 				mouseenter: function() {

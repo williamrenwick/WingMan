@@ -78,17 +78,20 @@ h1, h2, h3, h4, h5, p {
 }
 
 @font-face {
-  font-family: 'Apercu Bo
-  ld';
-  src: url('fonts/apercu-bold-webfont.eot?') format('eot'), url('fonts/apercu-bold-webfont.woff') format('woff'), url('fonts/apercu-bold-webfont.ttf') format('truetype');
+  font-family: 'Avenir Light';
+  src: url('fonts/avenirltstd-light.eot?') format('eot'), url('fonts/avenirltstd-light.woff') format('woff'), url('fonts/avenirltstd-light.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Apercu Light';
-  src: url('fonts/apercu-light-webfont.eot?') format('eot'), url('fonts/apercu-light-webfont.woff') format('woff'), url('fonts/apercu-light-webfont.ttf') format('truetype');
+  font-family: 'Avenir Roman';
+  src: url('fonts/avenirltstd-roman.eot?') format('eot'), url('fonts/avenirltstd-roman.woff') format('woff'), url('fonts/avenirltstd-roman.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Brandon Bold';
-  src: url('fonts/brandon_med-webfont.eot?') format('eot'), url('fonts/brandon_med-webfont.woff') format('woff'), url('fonts/brandon_med-webfont.ttf') format('truetype');
+  font-family: 'Avenir Medium';
+  src: url('fonts/avenirltstd-medium.eot?') format('eot'), url('fonts/avenirltstd-medium.woff') format('woff'), url('fonts/avenirltstd-medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Avenir Heavy';
+  src: url('fonts/avenirltstd-heavy.eot?') format('eot'), url('fonts/avenirltstd-heavy.woff') format('woff'), url('fonts/avenirltstd-heavy.ttf') format('truetype');
 }
 /* ==========================================================================
    Author's custom styles
@@ -96,6 +99,12 @@ h1, h2, h3, h4, h5, p {
 body {
     padding: 0;
     background-color: #fafafa;
+}
+.invis-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
 }
 .white {
     background-color: white;
@@ -112,19 +121,21 @@ body {
     top: 26px;
     left: 50%;
     width: 50px;
-    height: 39px;
+    height: 41px;
     margin-left: -25px;    
     background-image: url(../img/menu-ribbon-05.svg);
     background-position: top;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
+    cursor: pointer;
+}
+#wing-logo:hover {
+    background-image: url(../img/Wing-Logo-01.svg);
 }
 #tagline {
     margin-top: 70px;
-    font-family: 'Avenir lt std';
-    font-weight: 800;
+    font-family: 'Avenir Heavy';
     font-size: 11px;
-    text-transform: uppercase;
     text-align: center;
     color: #00b7f1;
     opacity: 0;
@@ -134,38 +145,39 @@ body {
     -o-transition: all .2s;
     -ms-transition: all .2s;
 }
-#tagline span {
+.tagline {
     transform: translateX(100px);
     -webkit-transform: translateX(100px);
     -moz-transform: translateX(100px);
     -o-transform: translateX(100px);
     -ms-transform: translateX(100px);
 }
-#tagline #top-line {
-    transition: all .2s .2s;
-    -webkit-transition: all .2s .2s;
-    -moz-transition: all .2s .2s;
-    -o-transition: all .2s .2s;
-    -ms-transition: all .2s .2s;
+#top-line {
+    text-transform: uppercase;
+    transition: all 0.2s 0.2s;
+    -webkit-transition: all 0.2s 0.2s;
+    -moz-transition: all 0.2s 0.2s;
+    -o-transition: all 0.2s 0.2s;
+    -ms-transition: all 0.2s 0.2s;
 }
-#tagline #middle-line {
-    transition: all .2s .3s;
-    -webkit-transition: all .2s .3s;
-    -moz-transition: all .2s .3s;
-    -o-transition: all .2s .3s;
-    -ms-transition: all .2s .3s;
+#middle-line {
+    transition: all 0.2s 0.3s;
+    -webkit-transition: all 0.2s 0.3s;
+    -moz-transition: all 0.2s 0.3s;
+    -o-transition: all 0.2s 0.3s;
+    -ms-transition: all 0.2s 0.3s;
 }
-#tagline #bottom-line {
-    transition: all .2s .4s;
-    -webkit-transition: all .2s .4s;
-    -moz-transition: all .2s .4s;
-    -o-transition: all .2s .4s;
-    -ms-transition: all .2s .4s;
+#bottom-line {
+    transition: all 0.2s 0.4s;
+    -webkit-transition: all 0.2s 0.4s;
+    -moz-transition: all 0.2s 0.4s;
+    -o-transition: all 0.2s 0.4s;
+    -ms-transition: all 0.2s 0.4s;
 }
 #tagline.active {
     opacity: 1;
 }
-#tagline.active span {
+#tagline.active .tagline {
     transform: translateX(0px);
     -webkit-transform: translateX(0px);
     -moz-transform: translateX(0px);
@@ -271,10 +283,12 @@ body {
     background-color: #00b7f1;
     z-index: 1000;
 }
+#menu.clicked {
+    display: table;
+}
 #menu ul {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    display: table-cell;
+    vertical-align: middle;
     list-style: none;
     opacity: 0;
     transform: scale(1.4);
@@ -298,7 +312,7 @@ body {
 }
 #menu li {
     margin-bottom: 40px;
-    font-family: "Avenir lt std";
+    font-family: "Avenir Medium";
     font-weight: 600;
     font-size: 60px;
     color: #ffffff;
@@ -398,14 +412,17 @@ body {
     .title-cont h1,
     .title-cont h2 {
         text-align: center;
-        font-family: "Avenir lt std";
         color: #ffffff;
     }
     .title-cont h1 {
         font-size: 76px;
+        font-family: "Avenir Light";
         font-weight: 200;
         letter-spacing: 3px;
     }    
+    .title-cont h2 {
+        font-family: "Avenir Heavy";
+    }
     .hov-effect-wrap {
         height: 76px;
         overflow: hidden;
@@ -451,19 +468,25 @@ body {
     }
     .title-cont h3 {
         color: #ffffff;
-        font-family: "Avenir lt std";
+        font-family: "Avenir Light";
         font-weight: 200;
         font-size: 16px;
         margin-left: 125px;
     }
     .title-cont h4 {
         color: #ffffff;
-        font-family: "Avenir lt std";
+        font-family: "Avenir Medium";
         font-weight: 600;
         font-size: 56px;
         text-align: center;
     }
-
+    .black-over {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0, 0.4);
+    }
     .client-name {
         width: 260px;
         margin: 20px auto;
@@ -473,7 +496,7 @@ body {
     .title-cont h5 {
         bottom: 0;
         color: #ffffff;
-        font-family: "Avenir lt std";
+        font-family: "Avenir Roman";
         font-weight: 400;
         font-size: 20px;
         text-align: center;
@@ -525,8 +548,8 @@ body {
         left: 50%;
         bottom: 10%;
         height: 56px;
-        width: 200px;
-        margin-left: -100px;
+        width: 210px;
+        margin-left: -120px;
         padding: 20px;
         background-color: transparent;
         cursor: pointer;
@@ -578,7 +601,7 @@ body {
         color: #ffffff;
         text-align: left;
         margin-left: 12px;
-        font-family: "Avenir lt std";
+        font-family: "Avenir Medium";
         font-weight: 600;
         font-size: 20px;
         line-height: 56px;
@@ -604,13 +627,22 @@ body {
     #clients-wrap {
         height: 100%;
     }
+    .red-over {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0, 0.8);
+    }
+    /*.client-item:nth-of-type(even) .red-over {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(141,26,32, 0.9);
+    }*/
     .client-item {
         display: table;
         position: relative;
         height: 400px;
         width: 100%;
         overflow: hidden;
-        cursor: pointer;
         background-size: cover;
         background-position: 50% 50%;
         background-repeat: no-repeat;
@@ -635,7 +667,7 @@ body {
     }
     .client-item h2,
     .client-item h3 {
-        font-family: "Avenir lt std";
+        font-family: "Avenir Light";
         font-weight: 200;
     }
     .client-item h2 {
@@ -649,7 +681,7 @@ body {
     }
     .client-item h1 {
         text-align: center;
-        font-family: "Avenir lt std";
+        font-family: "Avenir Heavy";
         font-size: 28px;
         color: #ffffff;
         text-transform: uppercase;
@@ -712,10 +744,21 @@ body {
     #item-three {
         background-color: #52b6e9;
     }
-    .cTxtContent {        
+    .cTxtContent {
+        position: absolute;
+        height: 100px;
+        width: 20%;
+        left: 50%;
+        top: 50%;
+        margin-left: -10%;
+        margin-top: -50px;      
         opacity: 1;
-        display: table-cell;
-        vertical-align: middle;
+        display: block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        text-align: center;
+        cursor: pointer;
         transition: all .4s;
         -webkit-transition: all .4s;
         -moz-transition: all .4s;
@@ -768,7 +811,7 @@ body {
         background-position: 50% 50%;
     }
     .allPro-client-logo {
-        height: 20px;
+        height: 90px;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: 0% 50%;
@@ -794,7 +837,7 @@ body {
     }
     .allPro-p-item-txt .txt-cont {
         width: 60%;
-        margin: 0 5%;
+        margin: 0 7%;
     }
     .allPro-client-info {
         width: 45%;
@@ -883,20 +926,20 @@ body {
     }
     .allPro-client-info h5 {
         margin-top: 90px;
-        font-family: 'Avenir lt std';
+        font-family: 'Avenir Medium';
         margin-bottom: 12px;
         font-weight: 500;
         color: black;
     }
     .allPro-p-item-txt h2 {
         font-size: 29px;
-        font-family: 'Avenir lt std';
+        font-family: 'Avenir Heavy';
         margin-top: 38px;
         font-weight: 800;
         color: #000000;
     }
     .allPro-p-item-txt h3 {
-        font-family: "Avenir lt std";
+        font-family: "Avenir Light";
         margin-top: 16px;
         margin-bottom: 38px;
         font-weight: 200;
@@ -906,7 +949,7 @@ body {
     }
     .allPro-client-info p,
     .allPro-p-item-txt p {
-        font-family: 'Avenir lt std';
+        font-family: 'Avenir Light';
         font-size: 16px;
         font-weight: 200;
         color: #666666;
@@ -954,6 +997,7 @@ body {
         right: 40px;
     }
     .proj-info-cont {
+        background-color: rgba(0, 0, 0, 0.6);
         display: table-cell;
         vertical-align: middle;
         position: relative;
@@ -962,7 +1006,7 @@ body {
     .proj-text {
         margin: 50px auto 100px ;
         width: 60%;
-        max-width: 900px;
+        max-width: 800px;
     }
     .proj-client-title {
         height: 20px;
@@ -972,17 +1016,18 @@ body {
         background-repeat: no-repeat;
     }
     .proj-info {
-        font-family: 'Avenir lt std';
+        font-family: 'Avenir Roman';
         margin-top: 25px;
     }
     .proj-text h1 {
-        font-family: 'Avenir lt std';
+        font-family: 'Avenir Light';
         font-size: 56px;
         font-weight: 100;
         color: #fff;
         margin-bottom: 40px;
     }
     .proj-text p {
+        font-family: 'Avenir Light';
         font-weight: 100;
         font-size: 17px;
         line-height: 26px;
@@ -996,8 +1041,7 @@ body {
         height: 100%;       
         cursor: pointer;
     }
-    .wy-wt-img-cont,
-    #where-map-cont {
+    .wy-wt-img-cont {
         float: left;
         height: 100%;
         width: 60%;
@@ -1036,8 +1080,7 @@ body {
         top: 40px;
         right: 40px;
     }
-    .wy-wt-info-cont,
-    .where-info-cont {
+    .wy-wt-info-cont {
         position: relative;
         float: right;
         width: 39%;
@@ -1047,26 +1090,73 @@ body {
         width: 80%;
     }
     .wy-wt-info {
-        margin-top: 65px;
+        position: relative;
+        margin-top: 45px;
     }
-    .wy-wt-info{
-        font-family: 'Avenir lt std';
+    .wy-wt-info:before {
+        position: absolute;
+        content: url('../img/wiggle-02.svg');
+        left: 50%;
+        bottom: -55px;
+        width: 38px;
+        height: 20px;
+        margin-left: -16px;
+        opacity: 0.1;
     }
     .wy-wt-text h1 {
-        font-family: 'Avenir lt std';
+        font-family: 'Avenir Medium';
         font-size: 60px;
         font-weight: 600;
         color: #00b7f1;
     }
     .wy-wt-text p {
+        font-family: 'Avenir Light';
         font-weight: 200;
-        font-size: 17px;
+        font-size: 16px;
+        line-height: 26px;
+        color: #aaaaaa;
+    }
+    .wy-wt-text span {
+        font-size: 22px;
+        line-height: 30px;
+        color: #333333;
+
     }
 
     /* WHERE */
+    #map-wrap {
+        position: fixed;
+        float: left;
+        width: 60%;
+        height: 100%; 
+    }
+    #where-map-cont {  
+        width: 100%; 
+        height: 100%;   
+        cursor: pointer;
+    }
+    .col {
+        width: 39%;
+        height: 100%;
+        float: right;
+    }
     .where-info-cont {
         display: table;
-        height: 100%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    #where-vid {
+        position: relative;
+        width: 78%;
+        margin-left: 20px;
+        margin-top: 100px;
+    }
+    #where-vid img {
+        width: 100%;
+        margin-top: 30px;
+    }
+    #where-vid video {
+        display: none;
     }
     #where-text {
         display: table-cell;
@@ -1078,14 +1168,12 @@ body {
         display: table;
         height: 200px;
         width: 100%;
-        font-family: 'Avenir lt std';
     }
-
     .section-wrap {
+        padding-left: 20px;
         display: table-cell;
         vertical-align: middle;
     } 
-
     .where-sect-icon {
         position: absolute;
         top: 50%;
@@ -1097,20 +1185,22 @@ body {
         background-size: contain;
     }    
     #map-pin-icon {
-        background-image: url(../img/mappin.png);
+        background-image: url(../img/where/mappin.png);
     }
     #telephone-icon {
-        background-image: url(../img/tele.png);
+        background-image: url(../img/where/tele.png);
     }
     #email-icon {
-        background-image: url(../img/tele.png);
+        background-image: url(../img/where/email.png);
     }
     .section-text {
         float: left;
         margin-left: 60px;
     }
-    #where-text h3 {
+    #where-text h3,
+    #where-vid h3 {
         font-size: 26px;
+        font-family: 'Avenir Light';
         font-weight: 200;
         color: #cccccc;
         line-height: 35px;
@@ -1119,6 +1209,7 @@ body {
         color: #dc3030;
     }
     #company-name {
+        font-family: 'Avenir Medium';
         font-weight: 600;
         color: #dc3030;
     }
@@ -1180,10 +1271,29 @@ body {
         font-size: 16px;
         line-height: 28px;
     }
+    .allPro-p-item-txt .txt-cont {
+        width: 60%;
+        margin: 0 8%;
+    }
+    /*Project Page*/
+    .proj-text h1 {
+        font-family: 'Avenir Light';
+        font-size: 56px;
+        font-weight: 100;
+        color: #fff;
+        margin-bottom: 40px;
+    }
+    .proj-text p {
+        font-family: 'Avenir Light';
+        font-weight: 100;
+        font-size: 17px;
+        line-height: 26px;
+        color: #fff;
+    }
     /*Why What Pages*/
 
     .wy-wt-info {
-        margin-top: 25px;
+        margin-top: 45px;
     }
     .wy-wt-text h1 {
         font-size: 50px;
@@ -1247,6 +1357,19 @@ body {
         font-size: 14px;
         line-height: 24px;
     } 
+    .allPro-p-item-txt .txt-cont {
+        width: 60%;
+        margin: 0 8%;
+    }
+    /*Project Page*/
+    .proj-text h1 {
+        font-size: 34px;
+        margin-bottom: 40px;
+    }
+    .proj-text p {
+        font-size: 14px;
+        line-height: 24px;
+    }
     /*Why What Pages*/
 
     .wy-wt-info {
@@ -1258,7 +1381,22 @@ body {
     .wy-wt-text p {
         font-weight: 200;
         font-size: 14px;
+        line-height: 22px;
+    }
+    /*Where Pages*/
+    #where-text section {
+        height: 160px;
+    }
+    .where-sect-icon {
+        height: 26px;
+        width: 26px; 
+        margin-top: -13px;        
     } 
+    #where-text h3,
+    #where-vid h3 {
+        font-size: 20px;
+        line-height: 35px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 899px) {
@@ -1281,6 +1419,57 @@ body {
         margin-left: -273px;
     }  
 
+    /*Project Page*/
+    .proj-text h1 {
+        font-size: 30px;
+        margin-bottom: 26px;
+    }
+    .proj-text p {
+        font-size: 13px;
+        line-height: 22px;
+    }
+    .play-cont h4 {
+        font-size: 20px;
+        line-height: 56px;
+    }
+    /*All Projects page */
+    .allPro-client-info {
+        width: 45%;
+        margin: 170px 5% 60px;;
+        box-sizing: border-box;
+    }
+    .allPro-p-item {
+        height: 400px;
+    }
+     .allPro-view-p-btn h3 {
+        font-size: 14px;
+    }
+    .allPro-client-info h5,
+    .allPro-p-item-txt h3 {
+        font-size: 16px;
+    }
+    .allPro-client-info h5 {
+        margin-top: 90px;
+        margin-bottom: 12px;
+    }
+    .allPro-p-item-txt h2 {
+        font-size: 24px;
+        margin-top: 38px;
+    }
+    .allPro-p-item-txt h3 {
+        margin-top: 12px;
+        margin-bottom: 34px;
+        letter-spacing: 2px;
+    }
+    .allPro-client-info p,
+    .allPro-p-item-txt p {
+        font-size: 14px;
+        line-height: 24px;
+    } 
+    .allPro-p-item-txt .txt-cont {
+        width: 60%;
+        margin: 0 10%;
+    }
     /*Why/What Pages*/
     .wy-wt-img-cont {
         height: 60%;
@@ -1314,7 +1503,48 @@ body {
     .wy-wt-text p {
         font-weight: 200;
         font-size: 14px;
+        line-height: 22px;
     } 
+    /*Where Pages*/
+    #map-wrap {
+        position: relative;
+        float: left;
+        width: 60%;
+        height: 60%;
+    }
+    .col {
+        width: 100%;
+    }
+    .where-info-cont {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+    }
+    #where-vid {
+        width: 90%;
+        margin-top: 80px;
+    }
+    #where-text section {
+        width: 50%;
+    }
+    .section-wrap {
+        padding-left: 30px;
+    }
+    .where-sect-icon {
+        height: 20px;
+        width: 20px;
+        margin-top: -10px; 
+    } 
+    #email, #phone {
+        float: left;
+        height: 80px !important;
+    }
+    #where-text h3,
+    #where-vid h3 {
+        font-size: 20px;
+        line-height: 35px;
+    }
+
 }
 @media only screen and (min-width: 451px) and (max-width: 767px) {
     /*Menu Styles*/
@@ -1449,7 +1679,29 @@ body {
     }  
 
     /*Project Page*/
-    
+    .proj-text h1 {
+        font-size: 26px;
+        margin-bottom: 26px;
+    }
+    .proj-text p {
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .play-cont {
+        bottom: 10%;
+        height: 46px;
+        width: 200px;
+        margin-left: -100px;
+        padding: 20px;
+    }
+    .play-button {
+        height: 46px;
+        width: 46px;
+    }
+    .play-cont h4 {
+        font-size: 16px;
+        line-height: 46px;
+    }
 
     /*Why/What Pages*/
     .wy-wt-img-cont {
@@ -1482,8 +1734,48 @@ body {
     }
     .wy-wt-text p {
         font-weight: 200;
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 20px;
     } 
+    /*Where Pages*/
+    #map-wrap {
+        position: relative;
+        float: left;
+        width: 60%;
+        height: 60%;
+    }
+    .col {
+        width: 100%;
+    }
+    .where-info-cont {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+    }
+    #where-vid {
+        width: 90%;
+        margin-top: 80px;
+    }
+    #where-text section {
+        width: 90%;
+    }
+    .section-wrap {
+        padding-left: 30px;
+    }
+    .where-sect-icon {
+        height: 20px;
+        width: 20px;
+        margin-top: -10px; 
+    } 
+    #email, #phone {
+        float: left;
+        height: 100px !important;
+    }
+    #where-text h3,
+    #where-vid h3 {
+        font-size: 20px;
+        line-height: 35px;
+    }
 }
 @media only screen and (min-width: 100px) and (max-width: 450px) {
     /*Menu Styles*/
@@ -1545,9 +1837,14 @@ body {
     .title-cont h5 {
         font-size: 13px;
     }
+
     /*Client Page*/
     .client-item {
         height: 200px;
+    }
+    .cTxtContent {
+        width: 40%;
+        margin-left: -20%;
     }
     /*Client Project Pages*/
     .allPro-img {
@@ -1607,8 +1904,34 @@ body {
     } 
 
     /*Project Page*/
-    
-
+    .proj-text {
+        margin: 120px auto 100px;
+        width: 80%;
+        max-width: 800px;
+    }
+    .proj-text h1 {
+        font-size: 26px;
+        margin-bottom: 26px;
+    }
+    .proj-text p {
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .play-cont {
+        bottom: 0%;
+        height: 46px;
+        width: 140px;
+        margin-left: -90px;
+        /* padding: 20px; */
+    }
+    .play-button {
+        height: 36px;
+        width: 36px;
+    }
+    .play-cont h4 {
+        font-size: 14px;
+        line-height: 36px;
+    }
     /*Why/What Pages*/
     .wy-wt-img-cont {
         height: 60%;
@@ -1640,8 +1963,58 @@ body {
     }
     .wy-wt-text p {
         font-weight: 200;
-        font-size: 14px;
-    } 
+        font-size: 13px;
+        line-height: 20px;
+    }
+    /*Where Pages*/
+    #map-wrap {
+        position: relative;
+        float: left;
+        width: 60%;
+        height: 60%;
+    }
+    .col {
+        width: 100%;
+    }
+    .where-info-cont {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+    }
+    #where-vid {
+        width: 86%;
+        margin-top: 80px;
+    }
+    #where-text section {
+        width: 100%;
+    }
+    #where-text {
+        width: 100%;
+    }
+    #email, #phone {
+        float: left;
+        height: 100px !important;
+    }
+    #where-text h3,
+    #where-vid h3 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+    #where-text h5 {
+        font-size: 11px;
+    }
+    .section-wrap {
+        padding-left: 20px;
+    }
+    .where-sect-icon {
+        height: 20px;
+        width: 20px;
+        margin-top: -10px; 
+    }
+    .section-text {
+        float: left;
+        margin-left: 40px;
+    }  
 }
 
 @media print,
