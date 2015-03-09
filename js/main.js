@@ -9,9 +9,10 @@ jQuery(document).ready(function ($) {
 			mainWrapper = $('.main-wrapper'),
 			$menu = $('#menu'),
 			windowW = $(window).innerWidth(),
-			windowH = $(window).height(); 
+			windowH = $(window).height(),
+			videourl;
 
-		function update() {
+		function update(url) {
 			menuWidth = $('.menu-wrapper').width(),
 			mainWrapper = $('.main-wrapper'),
 			$menu = $('#menu'),
@@ -22,7 +23,8 @@ jQuery(document).ready(function ($) {
 			this.mainWrapper = mainWrapper,
 			this.$menu = $menu,
 			this.windowW = windowW,
-			this.windowH = windowH
+			this.windowH = windowH,
+			this.videourl = url
 		};
 
 		return {			
@@ -31,8 +33,8 @@ jQuery(document).ready(function ($) {
 			mainWrapper: mainWrapper,
 			$menu: $menu,
 			windowW: windowW,
-			windowH: windowH
-
+			windowH: windowH,
+			videourl: videourl
 		}
 	}();
 
@@ -103,7 +105,13 @@ jQuery(document).ready(function ($) {
 					moveBckArr($arrow, 'once');
 				}
 			});
+			$playBtn.on({
+				click: function() {
+					var videourl = $(this).data('videourl');
 
+					globalVars.update(videourl);
+				}
+			})
 			$logo.on({
 				mouseenter: function() {
 					var $tagline = $('#tagline');
