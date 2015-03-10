@@ -69,7 +69,9 @@ jQuery(document).ready(function ($) {
 				$menuUL = $('#menu ul'),
 				$backBtn = $('.back-btn'),
 				$logo = $('#wing-logo'),
-				$playBtn = $('.play-cont'),
+				$playBtn = $('.play-btn'),
+				$closeVidBtn = $('#closeVidMenu span'),
+				$player = $('#player'),
 				moveIntId,
 				self = this;
 
@@ -109,7 +111,9 @@ jQuery(document).ready(function ($) {
 				click: function() {
 					var videourl = $(this).data('videourl');
 
-					globalVars.update(videourl);
+					createFrame();
+					playVideo(videourl);
+					addVideoMenu();
 				}
 			})
 			$logo.on({
@@ -128,6 +132,64 @@ jQuery(document).ready(function ($) {
 					$tagline.removeClass('active');
 				}
 			})
+			$closeVidBtn.on({
+				click: function() {
+					var $btn = $('.appear'),
+						originalColor = $btn.css('background-color');
+
+					changeBg($btn, originalColor, "#dc3030");
+					emptyDiv($player);
+				}
+			})
+
+			function changeBg(obj, originalCol, newCol) {
+
+				obj.css('background-color', newCol);
+
+				setTimeout(function() {
+					obj.css('background-color', originalCol)
+				}, 100);
+
+				clearTimeout();
+
+				setTimeout(function() {
+					obj.delay().removeClass('appear');
+				}, 400)
+
+				
+			}
+
+			function addVideoMenu() {
+				$closeVidMenu = $('#closeVidMenu');
+
+				$closeVidMenu.addClass('appear');
+			}
+
+			function emptyDiv(obj) {
+
+				obj.empty();
+			}
+
+			function createFrame() {
+				var iframe = '<iframe src="" frameborder="0"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';;
+
+				$player.append(iframe);
+			}
+
+
+			function playVideo(url) {
+				var params= '?autoplay=1&amp;badge=0&amp;byline=0&amp;color=222222&amp:portrait=0&amp;title=0;',
+					fullSrc= url + params;
+
+				$('#player').fadeIn(400, function() {
+					$('iframe').each( 
+						function(index, elem) {
+							elem.setAttribute('height', globalVars.windowH);
+							elem.setAttribute('src', fullSrc);
+						}
+					)
+				});
+			};
 
 			function moveBckArr(arrow, iterate) {
 				var a = arrow,
@@ -145,7 +207,7 @@ jQuery(document).ready(function ($) {
 				} else if (i == 'stop') {
 					clearInterval(moveIntId);
 				}
-			}
+			};
 		},
 		set: function() {
 			var list = $('#menu ul'),
@@ -176,6 +238,11 @@ jQuery(document).ready(function ($) {
 			size: 140
 		});
 	};
+	function addPlayer() {
+		var playerMrkUp = '<div id="player"></div>'	
+		
+		globalVars.mainWrapper.prepend(playerMrkUp);
+	}
 	//wrapper styles
 
 		//Homepage
@@ -398,10 +465,10 @@ jQuery(document).ready(function ($) {
 	function generalFns() {
 		navObj.events();
 	};
-	generalFns();
 
 	//Initalise and call all SPECIFIC required functions on load
 	function hpInit() {
+		addPlayer();
 		hpWrapSet()
 		hpObj.events();
 		slideAnim();
@@ -409,6 +476,7 @@ jQuery(document).ready(function ($) {
 		console.log('running hpInit')
 	}
 	function clientInit() {
+		addPlayer();
 		allWrapSet();
 		forceScroll();
 		clientHovEvents();
@@ -416,6 +484,7 @@ jQuery(document).ready(function ($) {
 		console.log('running clientInit')
 	}
 	function allProInit() {
+		addPlayer();
 		allProObj.events();
 		allWrapSet();
 		forceScroll();
@@ -424,6 +493,7 @@ jQuery(document).ready(function ($) {
 		console.log('running allProInit')
 	}
 	function proPgInit() {
+		addPlayer();
 		forceScroll();
 		whiteBG();
 		allWrapSet();
@@ -431,6 +501,7 @@ jQuery(document).ready(function ($) {
 		console.log('running proPgInit')
 	}
 	function whyWhatInit() {
+		addPlayer();
 		forceScroll();
 		allWrapSet();
 		whyWhatObj.set('.wy-wt-video');
@@ -438,6 +509,7 @@ jQuery(document).ready(function ($) {
 		console.log('running whyWhatInit');
 	}
 	function whereInit() {
+		addPlayer();
 		forceScroll();
 		allWrapSet();
 		whyWhatObj.set('#map-wrap');
@@ -490,6 +562,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	init();
+	generalFns();
 	
 });    
 

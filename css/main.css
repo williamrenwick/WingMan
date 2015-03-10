@@ -100,11 +100,15 @@ body {
     padding: 0;
     background-color: #fafafa;
 }
-.invis-video {
+#player {
+    display: none;
     position: absolute;
     width: 100%;
-    height: 100%;
     z-index: 1000;
+    background-color: #000000;
+}
+iframe {
+    width: 100%;
 }
 .white {
     background-color: white;
@@ -115,6 +119,42 @@ body {
     width: 90px;
     background-color: #ffffff;
     overflow: hidden;
+}
+#closeVidMenu {
+    display: table;
+    position: fixed;
+    height: 100%;
+    width: 90px;
+    background-color: #181818;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    transition: opacity .3s, transform .2s .1s;
+    -webkit-transition: opacity .3s, transform .2s .1s;
+    -moz-transition: opacity .3s, transform .2s .1s;
+    -o-transition: opacity .3s, transform .2s .1s;
+    -ms-transition: opacity .3s, transform .2s .1s;
+}
+#closeVidMenu span {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Avenir Heavy';
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+}
+#closeVidMenu.appear {
+    opacity: 1;
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    -ms-transform: translateX(0px);
 }
 #wing-logo {
     position: absolute;
@@ -1230,9 +1270,9 @@ body {
     } 
     .title-cont {
         width: 546px;
-        height: 192px;
+        height: 230px;
         margin-left: -273px;
-        margin-top: -96px;
+        margin-top: -115px;
     }
     .slide-up-hover:before {
         margin-left: -273px;
@@ -1316,9 +1356,9 @@ body {
     } 
     .title-cont {
         width: 546px;
-        height: 192px;
+        height: 230px;
         margin-left: -273px;
-        margin-top: -96px;
+        margin-top: -115px;
     }  
     .slide-up-hover:before {
         margin-left: -273px;
@@ -1411,9 +1451,9 @@ body {
     } 
     .title-cont {
         width: 546px;
-        height: 192px;
+        height: 230px;
         margin-left: -273px;
-        margin-top: -96px;
+        margin-top: -115px;
     }  
     .slide-up-hover:before {
         margin-left: -273px;
@@ -1570,9 +1610,9 @@ body {
     }
     .title-cont {
         width: 360px;
-        height: 124px;
+        height: 192px;
         margin-left: -180px;
-        margin-top: -62px;
+        margin-top: -66px;
     }
     .title-cont h1 {
         font-size: 38px;
