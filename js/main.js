@@ -120,14 +120,10 @@ jQuery(document).ready(function ($) {
 				mouseenter: function() {
 					var $tagline = $('#tagline');
 
-					$(this).css('height', '33px');
-
 					$tagline.addClass('active');
 				},
 				mouseleave: function() {
 					var $tagline = $('#tagline');
-
-					$(this).css('height', '39px');
 
 					$tagline.removeClass('active');
 				}
@@ -504,7 +500,7 @@ jQuery(document).ready(function ($) {
 		addPlayer();
 		forceScroll();
 		allWrapSet();
-		whyWhatObj.set('.wy-wt-video');
+		whyWhatObj.set('.wy-wh-video');
 
 		console.log('running whyWhatInit');
 	}
@@ -547,7 +543,7 @@ jQuery(document).ready(function ($) {
 		} else if (pageGetter.getData === 'whywhat') {
 			if (resize) {
 				allWrapSet();
-				whyWhatObj.set('.wy-wt-video');
+				whyWhatObj.set('.wy-wh-video');
 			} else {
 				whyWhatInit();
 			}

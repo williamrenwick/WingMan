@@ -93,6 +93,24 @@ h1, h2, h3, h4, h5, p {
   font-family: 'Avenir Heavy';
   src: url('fonts/avenirltstd-heavy.eot?') format('eot'), url('fonts/avenirltstd-heavy.woff') format('woff'), url('fonts/avenirltstd-heavy.ttf') format('truetype');
 }
+
+
+@font-face {
+  font-family: 'Museo Slab Light';
+  src: url('fonts/Museo_Slab_100-webfont.eot?') format('eot'), url('fonts/Museo_Slab_100-webfont.woff') format('woff'), url('fonts/Museo_Slab_100-webfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Museo Slab Roman';
+  src: url('fonts/Museo_Slab_300-webfont.eot?') format('eot'), url('fonts/Museo_Slab_300-webfont.woff') format('woff'), url('fonts/Museo_Slab_300-webfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Museo Slab Medium';
+  src: url('fonts/Museo_Slab_500-webfont.eot?') format('eot'), url('fonts/Museo_Slab_500-webfont.woff') format('woff'), url('fonts/Museo_Slab_500-webfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Museo Slab Heavy';
+  src: url('fonts/Museo_Slab_700-webfont.eot?') format('eot'), url('fonts/Museo_Slab_700-webfont.woff') format('woff'), url('fonts/Museo_Slab_700-webfont.ttf') format('truetype');
+}
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
@@ -160,24 +178,26 @@ iframe {
     position: absolute;
     top: 26px;
     left: 50%;
-    width: 50px;
+    width: 100%;
     height: 41px;
-    margin-left: -25px;    
+    margin-left: -50%;    
     background-image: url(../img/menu-ribbon-05.svg);
-    background-position: top;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
 }
 #wing-logo:hover {
     background-image: url(../img/Wing-Logo-01.svg);
+    background-position: 50% 50%;
+    background-size: contain;
 }
 #tagline {
-    margin-top: 70px;
-    font-family: 'Avenir Heavy';
+    margin-top: 72px;
+    font-family: 'Avenir light';
     font-size: 11px;
     text-align: center;
-    color: #00b7f1;
+    color: #0091d2;
     opacity: 0;
     transition: all .2s;
     -webkit-transition: all .2s;
@@ -191,14 +211,6 @@ iframe {
     -moz-transform: translateX(100px);
     -o-transform: translateX(100px);
     -ms-transform: translateX(100px);
-}
-#top-line {
-    text-transform: uppercase;
-    transition: all 0.2s 0.2s;
-    -webkit-transition: all 0.2s 0.2s;
-    -moz-transition: all 0.2s 0.2s;
-    -o-transition: all 0.2s 0.2s;
-    -ms-transition: all 0.2s 0.2s;
 }
 #middle-line {
     transition: all 0.2s 0.3s;
@@ -352,7 +364,7 @@ iframe {
 }
 #menu li {
     margin-bottom: 40px;
-    font-family: "Avenir Medium";
+    font-family: "Museo Slab Medium";
     font-weight: 600;
     font-size: 60px;
     color: #ffffff;
@@ -456,12 +468,12 @@ iframe {
     }
     .title-cont h1 {
         font-size: 76px;
-        font-family: "Avenir Light";
+        font-family: "Museo Slab Light";
         font-weight: 200;
         letter-spacing: 3px;
     }    
     .title-cont h2 {
-        font-family: "Avenir Heavy";
+        font-family: "Museo Slab Heavy";
     }
     .hov-effect-wrap {
         height: 76px;
@@ -515,7 +527,7 @@ iframe {
     }
     .title-cont h4 {
         color: #ffffff;
-        font-family: "Avenir Medium";
+        font-family: "Museo Slab Medium";
         font-weight: 600;
         font-size: 56px;
         text-align: center;
@@ -670,7 +682,7 @@ iframe {
     .red-over {
         height: 100%;
         width: 100%;
-        background-color: rgba(0,0,0, 0.8);
+        background-color: rgba(0,0,0, 0.6);
     }
     /*.client-item:nth-of-type(even) .red-over {
         height: 100%;
@@ -707,7 +719,7 @@ iframe {
     }
     .client-item h2,
     .client-item h3 {
-        font-family: "Avenir Light";
+        font-family: "Museo Slab Light";
         font-weight: 200;
     }
     .client-item h2 {
@@ -721,7 +733,7 @@ iframe {
     }
     .client-item h1 {
         text-align: center;
-        font-family: "Avenir Heavy";
+        font-family: "Museo Slab Heavy";
         font-size: 28px;
         color: #ffffff;
         text-transform: uppercase;
@@ -953,7 +965,7 @@ iframe {
         -o-transform: translateY(0px);
     }
     .allPro-view-p-btn h3 {
-        font-family: 'Avenir lt std';
+        font-family: 'Museo Slab Medium';
         font-weight: 200;
         font-size: 14px;
         text-align: center;
@@ -966,26 +978,26 @@ iframe {
     }
     .allPro-client-info h5 {
         margin-top: 90px;
-        font-family: 'Avenir Medium';
+        font-family: 'Museo Slab Medium';
         margin-bottom: 12px;
         font-weight: 500;
         color: black;
     }
     .allPro-p-item-txt h2 {
         font-size: 29px;
-        font-family: 'Avenir Heavy';
+        font-family: 'Museo Slab Medium';
         margin-top: 38px;
         font-weight: 800;
         color: #000000;
     }
     .allPro-p-item-txt h3 {
-        font-family: "Avenir Light";
+        font-family: "Museo Slab Roman";
         margin-top: 16px;
         margin-bottom: 38px;
         font-weight: 200;
         color: #00b7f1;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
     }
     .allPro-client-info p,
     .allPro-p-item-txt p {
@@ -1050,17 +1062,18 @@ iframe {
     }
     .proj-client-title {
         height: 20px;
+        width: 65%;
         margin-bottom: 20px;
         background-size: contain;
         background-position: 0% 50%;
         background-repeat: no-repeat;
     }
     .proj-info {
-        font-family: 'Avenir Roman';
+        font-family: 'Museo Slab Roman';
         margin-top: 25px;
     }
     .proj-text h1 {
-        font-family: 'Avenir Light';
+        font-family: 'Museo Slab Light';
         font-size: 56px;
         font-weight: 100;
         color: #fff;
@@ -1075,13 +1088,13 @@ iframe {
     }
 
     /*Why/What Pages*/
-    .wy-wt-video {
+    .wy-wh-video {
         position: fixed;
         width: 60%;
         height: 100%;       
         cursor: pointer;
     }
-    .wy-wt-img-cont {
+    .wy-wh-img-cont {
         float: left;
         height: 100%;
         width: 60%;
@@ -1102,61 +1115,52 @@ iframe {
         -ms-transition: -ms-transform .6s;
         -o-transition: -o-transform .6s;
     }
-    .wy-wt-video:hover .play-btn-lrg {
+    .wy-wh-video:hover .play-btn-lrg {
         transform: scale(1.2) rotate(360deg);
         -webkit-transform: scale(1.2) rotate(360deg);
         -moz-transform: scale(1.2) rotate(360deg);
         -o-transform: scale(1.2) rotate(360deg);
         -ms-transform: scale(1.2) rotate(360deg);
     }
-    .wy-wt-video, .play-btn-lrg {
+    .wy-wh-video, .play-btn-lrg {
         background-position: center;
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .wy-wt-back-btn {
+    .wy-wh-back-btn {
         position: absolute;
         top: 40px;
         right: 40px;
     }
-    .wy-wt-info-cont {
+    .wy-wh-info-cont {
         position: relative;
         float: right;
         width: 39%;
     }
-    .wy-wt-text{
+    .wy-wh-text{
         margin: 140px 20px 100px 20px;
         width: 80%;
     }
-    .wy-wt-info {
+    .wy-wh-info {
         position: relative;
         margin-top: 45px;
     }
-    .wy-wt-info:before {
-        position: absolute;
-        content: url('../img/wiggle-02.svg');
-        left: 50%;
-        bottom: -55px;
-        width: 38px;
-        height: 20px;
-        margin-left: -16px;
-        opacity: 0.1;
-    }
-    .wy-wt-text h1 {
-        font-family: 'Avenir Medium';
+    .wy-wh-text h1 {
+        font-family: 'Museo Slab Medium';
         font-size: 60px;
         font-weight: 600;
         color: #00b7f1;
     }
-    .wy-wt-text p {
+    .wy-wh-text p {
         font-family: 'Avenir Light';
         font-weight: 200;
         font-size: 16px;
         line-height: 26px;
         color: #aaaaaa;
     }
-    .wy-wt-text span {
+    .wy-wh-text span {
+        font-family: 'Museo Slab Light';
         font-size: 22px;
         line-height: 30px;
         color: #333333;
@@ -1189,7 +1193,7 @@ iframe {
         position: relative;
         width: 78%;
         margin-left: 20px;
-        margin-top: 100px;
+        margin-top: 60px;
     }
     #where-vid img {
         width: 100%;
@@ -1200,13 +1204,13 @@ iframe {
     }
     #where-text {
         display: table-cell;
-        width: 80%;
+        width: 100%;
         vertical-align: middle;
     }
     #where-text section {
         position: relative;
         display: table;
-        height: 200px;
+        height: 130px;
         width: 100%;
     }
     .section-wrap {
@@ -1218,9 +1222,9 @@ iframe {
         position: absolute;
         top: 50%;
         float: left;
-        height: 30px;
-        width: 30px; 
-        margin-top: -15px;       
+        height: 26px;
+        width: 26px; 
+        margin-top: -13px;       
         background-repeat: no-repeat;
         background-size: contain;
     }    
@@ -1240,19 +1244,16 @@ iframe {
     #where-text h3,
     #where-vid h3 {
         font-size: 26px;
-        font-family: 'Avenir Light';
+        font-family: 'Museo Slab Light';
         font-weight: 200;
         color: #cccccc;
         line-height: 35px;
     }
     #where-text h5 {
         color: #dc3030;
+        font-family: 'Avenir Roman';
     }
-    #company-name {
-        font-family: 'Avenir Medium';
-        font-weight: 600;
-        color: #dc3030;
-    }
+
 
 
 /* ==========================================================================
@@ -1317,30 +1318,34 @@ iframe {
     }
     /*Project Page*/
     .proj-text h1 {
-        font-family: 'Avenir Light';
         font-size: 56px;
-        font-weight: 100;
-        color: #fff;
         margin-bottom: 40px;
     }
     .proj-text p {
-        font-family: 'Avenir Light';
-        font-weight: 100;
         font-size: 17px;
         line-height: 26px;
-        color: #fff;
     }
     /*Why What Pages*/
 
-    .wy-wt-info {
+    .wy-wh-info {
         margin-top: 45px;
     }
-    .wy-wt-text h1 {
+    .wy-wh-text h1 {
         font-size: 50px;
     }
-    .wy-wt-text p {
+    .wy-wh-text p {
         font-weight: 200;
         font-size: 16px;
+    }
+
+    /*Where*/
+    #where-text h3,
+    #where-vid h3 {
+        font-size: 24px;
+        line-height: 35px;
+    }
+    #where-text h5 {
+        color: #dc3030;
     }
 }
 
@@ -1412,20 +1417,20 @@ iframe {
     }
     /*Why What Pages*/
 
-    .wy-wt-info {
+    .wy-wh-info {
         margin-top: 30px;
     }
-    .wy-wt-text h1 {
+    .wy-wh-text h1 {
         font-size: 40px;
     }
-    .wy-wt-text p {
+    .wy-wh-text p {
         font-weight: 200;
         font-size: 14px;
         line-height: 22px;
     }
     /*Where Pages*/
     #where-text section {
-        height: 160px;
+        height: 120px;
     }
     .where-sect-icon {
         height: 26px;
@@ -1511,36 +1516,36 @@ iframe {
         margin: 0 10%;
     }
     /*Why/What Pages*/
-    .wy-wt-img-cont {
+    .wy-wh-img-cont {
         height: 60%;
         width: 100%;
         position: relative;
     }
-    .wy-wt-video {
+    .wy-wh-video {
         position: relative;
         width: 100%;
     }
-    .wy-wt-back-btn {
+    .wy-wh-back-btn {
         position: absolute;
         top: 40px;
         right: 40px;
     }
-    .wy-wt-info-cont {
+    .wy-wh-info-cont {
         position: relative;
         width: 100%;
 
     }
-    .wy-wt-text {
+    .wy-wh-text {
         margin: 40px 20px 100px 20px;
         width: 80%;
     }
-    .wy-wt-info {
+    .wy-wh-info {
         margin-top: 25px;
     }
-    .wy-wt-text h1 {
+    .wy-wh-text h1 {
         font-size: 40px;
     }
-    .wy-wt-text p {
+    .wy-wh-text p {
         font-weight: 200;
         font-size: 14px;
         line-height: 22px;
@@ -1566,6 +1571,7 @@ iframe {
     }
     #where-text section {
         width: 50%;
+        height: 160px;
     }
     .section-wrap {
         padding-left: 30px;
@@ -1609,14 +1615,14 @@ iframe {
         border-width: 30px 70px;
     }
     .title-cont {
-        width: 360px;
-        height: 192px;
-        margin-left: -180px;
-        margin-top: -66px;
+      width: 350px;
+      height: 192px;
+      margin-left: -175px;
+      margin-top: -66px;
     }
     .title-cont h1 {
-        font-size: 38px;
-        letter-spacing: 3px;
+        font-size: 36px;
+        letter-spacing: 2px;
     }
     .title-cont h2 {
         margin-top: 20px;
@@ -1744,35 +1750,35 @@ iframe {
     }
 
     /*Why/What Pages*/
-    .wy-wt-img-cont {
+    .wy-wh-img-cont {
         height: 60%;
         width: 100%;
         position: relative;
     }
-    .wy-wt-video {
+    .wy-wh-video {
         position: relative;
         width: 100%;
     }
-    .wy-wt-back-btn {
+    .wy-wh-back-btn {
         position: absolute;
         top: 40px;
         right: 40px;
     }
-    .wy-wt-info-cont {
+    .wy-wh-info-cont {
         position: relative;
         width: 100%;
     }
-    .wy-wt-text {
+    .wy-wh-text {
         margin: 40px 20px 100px 20px;
         width: 80%;
     }
-    .wy-wt-info {
+    .wy-wh-info {
         margin-top: 25px;
     }
-    .wy-wt-text h1 {
+    .wy-wh-text h1 {
         font-size: 40px;
     }
-    .wy-wt-text p {
+    .wy-wh-text p {
         font-weight: 200;
         font-size: 13px;
         line-height: 20px;
@@ -1790,7 +1796,7 @@ iframe {
     .where-info-cont {
         float: left;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 60px;
     }
     #where-vid {
         width: 90%;
@@ -1840,9 +1846,9 @@ iframe {
         border-width: 0px;
     }
     .title-cont {
-        width: 170px;
+        width: 60%;
         height: 120px;
-        margin-left: -85px;
+        margin-left: -30%;
         margin-top: -60px;
     }
     .title-cont h1 {
@@ -1973,35 +1979,35 @@ iframe {
         line-height: 36px;
     }
     /*Why/What Pages*/
-    .wy-wt-img-cont {
+    .wy-wh-img-cont {
         height: 60%;
         width: 100%;
         position: relative;
     }
-    .wy-wt-video {
+    .wy-wh-video {
         position: relative;
         width: 100%;
     }
-    .wy-wt-back-btn {
+    .wy-wh-back-btn {
         position: absolute;
         top: 40px;
         right: 40px;
     }
-    .wy-wt-info-cont {
+    .wy-wh-info-cont {
         position: relative;
         width: 100%;
     }
-    .wy-wt-text {
+    .wy-wh-text {
         margin: 40px 20px 100px 20px;
         width: 80%;
     }
-    .wy-wt-info {
+    .wy-wh-info {
         margin-top: 25px;
     }
-    .wy-wt-text h1 {
+    .wy-wh-text h1 {
         font-size: 40px;
     }
-    .wy-wt-text p {
+    .wy-wh-text p {
         font-weight: 200;
         font-size: 13px;
         line-height: 20px;
@@ -2019,7 +2025,7 @@ iframe {
     .where-info-cont {
         float: left;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 60px;
     }
     #where-vid {
         width: 86%;
