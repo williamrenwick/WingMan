@@ -682,13 +682,13 @@ iframe {
     .red-over {
         height: 100%;
         width: 100%;
-        background-color: rgba(0,0,0, 0.6);
+        background-color: rgba(0,0,0, 0.7);
     }
-    /*.client-item:nth-of-type(even) .red-over {
+    .client-item:nth-of-type(odd) .red-over {
         height: 100%;
         width: 100%;
-        background-color: rgba(141,26,32, 0.9);
-    }*/
+        background-color: rgba(0,0,0, 0.8);
+    }
     .client-item {
         display: table;
         position: relative;
@@ -789,13 +789,6 @@ iframe {
         border-radius: 100px;
     }
 
-    #item-one {
-        background-color: #ed1c24;
-        background-position: 50% 35%;
-    }
-    #item-three {
-        background-color: #52b6e9;
-    }
     .cTxtContent {
         position: absolute;
         height: 100px;
