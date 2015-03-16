@@ -112,6 +112,7 @@ jQuery(document).ready(function ($) {
 					var videourl = $(this).data('videourl');
 
 					createFrame();
+					$('#player').addClass('playeractive').fadeIn(400);
 					playVideo(videourl);
 					addVideoMenu();
 				}
@@ -177,14 +178,12 @@ jQuery(document).ready(function ($) {
 				var params= '?autoplay=1&amp;badge=0&amp;byline=0&amp;color=222222&amp:portrait=0&amp;title=0;',
 					fullSrc= url + params;
 
-				$('#player').fadeIn(400, function() {
-					$('iframe').each( 
-						function(index, elem) {
-							elem.setAttribute('height', globalVars.windowH);
-							elem.setAttribute('src', fullSrc);
-						}
-					)
-				});
+				$('iframe').each( 
+					function(index, elem) {
+						elem.setAttribute('height', globalVars.windowH);
+						elem.setAttribute('src', fullSrc);
+					}
+				)
 			};
 
 			function moveBckArr(arrow, iterate) {
