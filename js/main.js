@@ -7,6 +7,7 @@ jQuery(document).ready(function ($) {
 	var globalVars = function() {
 		var menuWidth = $('.menu-wrapper').width(),
 			mainWrapper = $('.main-wrapper'),
+			$body = $('body'),
 			$menu = $('#menu'),
 			windowW = $(window).innerWidth(),
 			windowH = $(window).height(),
@@ -22,6 +23,7 @@ jQuery(document).ready(function ($) {
 			this.menuWidth = menuWidth,
 			this.mainWrapper = mainWrapper,
 			this.$menu = $menu,
+			this.$body = $body,
 			this.windowW = windowW,
 			this.windowH = windowH,
 			this.videourl = url
@@ -32,6 +34,7 @@ jQuery(document).ready(function ($) {
 			menuWidth:  menuWidth,
 			mainWrapper: mainWrapper,
 			$menu: $menu,
+			$body: $body,
 			windowW: windowW,
 			windowH: windowH,
 			videourl: videourl
@@ -63,6 +66,7 @@ jQuery(document).ready(function ($) {
 
 	//menu 
 	var navObj = {
+		loadHasRun: false,
 		events: function() {
 			var $menubtn = $('#menu-button'),
 				clicked = false,
@@ -215,17 +219,59 @@ jQuery(document).ready(function ($) {
 				'margin-left': - list.width() / 2,
 				'margin-top': - list.height() / 2
 			});
+		},
+		moveIn: function() {
+			var $menuwrap = $('.menu-wrapper');
+
+			setTimeout(function() {
+				$menuwrap.addClass('loaded');
+			}, 1600)
 		}
+	}
+	function loader() {
+		var $loaderWrap = $('#ip-loader'),
+			$loader = $('#loader'),
+			self = this;
+
+		function fadeOutLoader() {
+			setTimeout(function() {
+				$loader.fadeOut(200, function() {
+					$loaderWrap.removeClass('loading');
+				})
+			}, 1800);
+		}
+
+
+		if (!self.loadHasRun) {
+
+			$loaderWrap.addClass('loading');
+
+			navObj.moveIn();
+
+			fadeOutLoader();
+
+		} else {
+
+			$loader.fadeIn();
+
+			$loaderWrap.addClass('loading');
+
+			fadeOutLoader();
+		}
+
+		self.loadHasRun = true;
 	}
 	function forceScroll() {
 
 		globalVars.mainWrapper.css('overflow-y', 'scroll');
 	}
+
 	function whiteBG() {
 		var body = $('body');
 
 		body.addClass('white');
 	}
+
 	function truncate() {
 		$text = $('.truncate');
 
@@ -233,6 +279,7 @@ jQuery(document).ready(function ($) {
 			size: 140
 		});
 	};
+
 	function addPlayer() {
 		var playerMrkUp = '<div id="player"></div>'	
 		
@@ -463,14 +510,16 @@ jQuery(document).ready(function ($) {
 
 	//Initalise and call all SPECIFIC required functions on load
 	function hpInit() {
+		loader();
 		addPlayer();
-		hpWrapSet()
+		hpWrapSet();
 		hpObj.events();
 		slideAnim();
 		slideLog();
 		console.log('running hpInit')
 	}
 	function clientInit() {
+
 		addPlayer();
 		allWrapSet();
 		forceScroll();
@@ -479,6 +528,7 @@ jQuery(document).ready(function ($) {
 		console.log('running clientInit')
 	}
 	function allProInit() {
+
 		addPlayer();
 		allProObj.events();
 		allWrapSet();
@@ -488,6 +538,7 @@ jQuery(document).ready(function ($) {
 		console.log('running allProInit')
 	}
 	function proPgInit() {
+
 		addPlayer();
 		forceScroll();
 		whiteBG();
@@ -496,6 +547,7 @@ jQuery(document).ready(function ($) {
 		console.log('running proPgInit')
 	}
 	function whyWhatInit() {
+
 		addPlayer();
 		forceScroll();
 		allWrapSet();
@@ -504,6 +556,7 @@ jQuery(document).ready(function ($) {
 		console.log('running whyWhatInit');
 	}
 	function whereInit() {
+
 		addPlayer();
 		forceScroll();
 		allWrapSet();

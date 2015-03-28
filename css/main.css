@@ -118,6 +118,56 @@ body {
     padding: 0;
     background-color: #fafafa;
 }
+#loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    z-index: 101;
+}
+#ip-loader {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    margin-top: -30px;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+    z-index: 102;
+}
+#ip-loader.loading {
+    opacity: 1;
+}
+#ip-loader svg {
+    display: block;
+    margin: 0 auto;
+}
+#loader-circle-fill {
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+}   
+.loading #loader-circle-fill {
+    -webkit-animation: dash 2s linear forwards;
+    animation: dash 2s linear forwards;
+}
+@-webkit-keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 #player {
     display: none;
     position: absolute;
@@ -154,6 +204,24 @@ iframe {
     width: 90px;
     background-color: #ffffff;
     overflow: hidden;
+    z-index: 103;
+    transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    transition: transform .2s;
+    -webkit-transition: -webkit-transform .2s;
+    -moz-transition: -moz-transform .2s;
+    -o-transition: -o-transform .2s;
+    -ms-transition: -ms-transform .2s;
+}
+.menu-wrapper.loaded {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    -ms-transform: translateX(0px);
 }
 #closeVidMenu {
     display: table;
@@ -163,6 +231,7 @@ iframe {
     background-color: #181818;
     overflow: hidden;
     opacity: 0;
+    z-index: 104;
     transform: translateX(-100px);
     -webkit-transform: translateX(-100px);
     -moz-transform: translateX(-100px);
