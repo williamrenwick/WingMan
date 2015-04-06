@@ -285,7 +285,7 @@ jQuery(document).ready(function ($) {
 		
 		globalVars.mainWrapper.prepend(playerMrkUp);
 	}
-	//wrapper styles
+	//Page functions 
 
 		//Homepage
 
@@ -460,7 +460,7 @@ jQuery(document).ready(function ($) {
 		}
 
 
-	//Get Page Type 
+	//Get Page Type - Use pageGetter.update() once AJAX call is complete
 
 	var pageGetter = function() {
 		var pageid = $('.page-id'),
@@ -479,13 +479,15 @@ jQuery(document).ready(function ($) {
 
 	}();
 
+	// To call before PJAX call to remove the event listeners of previous pages.
+
 	function destroyEvents(itemArray) {
-		if (typeof itemArray == 'object') {
-			for (i = 0; i < itemArray.length; i++) {
-				console.log(itemArray[i]);
-				itemArray[i].off();
-			}
+		
+		for (i = 0; i < itemArray.length; i++) {
+			console.log(itemArray[i]);
+			itemArray[i].off();
 		}
+
 	}
 	
 	function debounce(func, wait, immediate) {
