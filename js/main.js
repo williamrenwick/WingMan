@@ -478,6 +478,15 @@ jQuery(document).ready(function ($) {
 		}
 
 	}();
+
+	function destroyEvents(itemArray) {
+		if (typeof itemArray == 'object') {
+			for (i = 0; i < itemArray.length; i++) {
+				console.log(itemArray[i]);
+				itemArray[i].off();
+			}
+		}
+	}
 	
 	function debounce(func, wait, immediate) {
 		var timeout;
