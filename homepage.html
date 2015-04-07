@@ -3,11 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Wingman - Wings Little Brother</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/polyfill.object-fit.css">
         <link rel="stylesheet" href="css/jquery.fullPage.css">
         <link rel="stylesheet" href="css/main.css">
 
@@ -67,7 +68,7 @@
                     </div>
                     
                     <div class="video-cont cf ">
-                        <video id="showreel" loop="true" muted="true "src="http://player.vimeo.com/external/114764693.sd.mp4?s=c3044d5ddaab1f2e6830f561b8e30576"></video>
+                        <video class="hp-video for-fallback" loop="true" muted="true "src="http://player.vimeo.com/external/114764693.sd.mp4?s=c3044d5ddaab1f2e6830f561b8e30576" data-poster-image="img/testposter.jpg"></video>
 
                         <div id="wing-pattern-fs"></div>
 
@@ -86,7 +87,7 @@
                 <div id="section1" class="section cf">
                     <div class="video-cont cf">
 
-                        <video id="showreel" loop="true" muted="true "src="http://player.vimeo.com/external/114672424.sd.mp4?s=f63791c73cb55364f79d084a1d3f1783"></video>
+                        <video class="hp-video for-fallback" loop="true" muted="true "src="http://player.vimeo.com/external/114672424.sd.mp4?s=f63791c73cb55364f79d084a1d3f1783" data-poster-image="img/testposter.jpg"></video>
 
                         <div class="black-over"></div>
                     </div>
@@ -107,7 +108,7 @@
                 <div id="section2" class="section cf">
                     <div class="video-cont cf">
 
-                        <video id="showreel" loop="true" muted="true "src="http://player.vimeo.com/external/117588622.sd.mp4?s=7a488c1fb7ffd97380f5442f4b947b06"></video>
+                        <video class="hp-video for-fallback" loop="true" muted="true "src="http://player.vimeo.com/external/117588622.sd.mp4?s=7a488c1fb7ffd97380f5442f4b947b06" data-poster-image="img/testposter.jpg"></video>
 
                        <div class="black-over"></div> 
                     </div>
@@ -127,7 +128,7 @@
                 <div id="section3" class="section cf">
                     <div class="video-cont cf">
 
-                        <video id="showreel" loop="true" muted="true "src="http://player.vimeo.com/external/114135110.sd.mp4?s=47c8449c6593241b107565782daa28fd"></video>
+                        <video class="hp-video for-fallback" loop="true" muted="true "src="http://player.vimeo.com/external/114135110.sd.mp4?s=47c8449c6593241b107565782daa28fd" data-poster-image="img/testposter.jpg"></video>
 
                         <div class="black-over"></div>
                     </div>
@@ -149,8 +150,16 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
         <script src="js/vendor/jquery.fullPage.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/TweenMax.min.js"></script>
+        <script src="js/vendor/polyfill.object-fit.min.js"></script>
         <script src="js/main.js"></script>
+
+        <script>
+            objectFit.polyfill({
+                selector: '.hp-video', // this can be any CSS selector
+                fittype: 'cover', // either contain, cover, fill or none
+                disableCrossDomain: 'true' // either 'true' or 'false' to not parse external CSS files.
+            });
+        </script>
 
     </body>
 </html>

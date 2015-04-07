@@ -1,9 +1,5 @@
 jQuery(document).ready(function ($) {
 
-	//$('.slide').css({height: windowH});
-
-	//var	slideHeight = $('#hp-slider section').height();
-
 	var globalVars = function() {
 		var menuWidth = $('.menu-wrapper').width(),
 			mainWrapper = $('.main-wrapper'),
@@ -39,6 +35,38 @@ jQuery(document).ready(function ($) {
 			windowH: windowH,
 			videourl: videourl
 		}
+	}();
+
+	var videoDetect = function() {
+
+		if (!Modernizr.video) {
+			console.log('has video');
+
+			
+		} 
+
+		function getImgData() {
+			var $videos = $('.for-fallback');
+
+			$videos.each(function() {
+				var data = $(this).data('poster-image'),
+					container = $(this).parent();
+				console.log(data);
+
+				function createPoster() {
+					$('<div/>', {
+					    class: 'fallback-img',
+					    style: 'background-image: url('+ data +')'
+					}).prependTo(container);
+				}
+
+				createPoster();
+			})
+		}
+
+
+		getImgData();
+
 	}();
 
 
