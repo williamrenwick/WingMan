@@ -258,8 +258,7 @@ jQuery(document).ready(function ($) {
 	}
 	function loader() {
 		var $loaderWrap = $('#ip-loader'),
-			$loader = $('#loader'),
-			self = this;
+			$loader = $('#loader');
 
 		function fadeOutLoader() {
 			setTimeout(function() {
@@ -270,7 +269,7 @@ jQuery(document).ready(function ($) {
 		}
 
 
-		if (!self.loadHasRun) {
+		if (!navObj.loadHasRun) {
 
 			$loaderWrap.addClass('loading');
 
@@ -278,16 +277,11 @@ jQuery(document).ready(function ($) {
 
 			fadeOutLoader();
 
-		} else {
+			navObj.loadHasRun = true;
 
-			$loader.fadeIn();
-
-			$loaderWrap.addClass('loading');
-
-			fadeOutLoader();
 		}
 
-		self.loadHasRun = true;
+		
 	}
 	function forceScroll() {
 
@@ -406,7 +400,9 @@ jQuery(document).ready(function ($) {
 		//Clients Page
 
 		function clientHovEvents() {
-			var $item = $('.cTxtContent');
+			var $item = $('.cTxtContent'),
+				$viewProjBtn = $('.clientHov');
+
 			console.log('hovevent');
 			$item.on({
 				mouseenter: function() {
@@ -414,12 +410,17 @@ jQuery(document).ready(function ($) {
 					console.log('in');
 					$this.parent().addClass('active');
 				},
+				click: function() {
+					var $this = $(this);
+
+					console.log('clicked');
+				},
 				mouseleave: function() {
 					var $this = $(this);
 
 					$this.parent().removeClass('active');
 				}
-			})
+			});
 		}
 
 		//All Projects 
@@ -558,7 +559,7 @@ jQuery(document).ready(function ($) {
 		console.log('running hpInit')
 	}
 	function clientInit() {
-
+		loader();
 		addPlayer();
 		allWrapSet();
 		forceScroll();
@@ -567,7 +568,7 @@ jQuery(document).ready(function ($) {
 		console.log('running clientInit')
 	}
 	function allProInit() {
-
+		loader();
 		addPlayer();
 		allProObj.events();
 		allWrapSet();
@@ -577,7 +578,7 @@ jQuery(document).ready(function ($) {
 		console.log('running allProInit')
 	}
 	function proPgInit() {
-
+		loader();
 		addPlayer();
 		forceScroll();
 		whiteBG();
@@ -586,7 +587,7 @@ jQuery(document).ready(function ($) {
 		console.log('running proPgInit')
 	}
 	function whyWhatInit() {
-
+		loader();
 		addPlayer();
 		forceScroll();
 		allWrapSet();
@@ -595,7 +596,7 @@ jQuery(document).ready(function ($) {
 		console.log('running whyWhatInit');
 	}
 	function whereInit() {
-
+		loader();
 		addPlayer();
 		forceScroll();
 		allWrapSet();
