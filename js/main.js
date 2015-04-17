@@ -503,6 +503,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		return {
+			update: update,
 			getData: getData
 		}
 
@@ -556,6 +557,7 @@ jQuery(document).ready(function ($) {
 		hpObj.events();
 		slideAnim();
 		slideLog();
+
 		console.log('running hpInit')
 	}
 	function clientInit() {
@@ -605,7 +607,12 @@ jQuery(document).ready(function ($) {
 
 		console.log('running whereInit');
 	}
+
 	function init(resize) {
+		
+		if (!resize) {
+			pageGetter.update();
+		}
 
 		if (pageGetter.getData === 'homepage') {		
 			// any functions not to run on resize below
